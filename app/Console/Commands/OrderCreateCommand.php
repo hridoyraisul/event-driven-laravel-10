@@ -30,18 +30,16 @@ class OrderCreateCommand extends Command
     public function handle()
     {
         $faker = \Faker\Factory::create();
+        $products = [];
+        for ($i = 0; $i < $faker->numberBetween(1, 6); $i++) {
+            $products[] = [
+                'id' => $faker->numberBetween(1, 10),
+                'quantity' => $faker->numberBetween(2, 10)
+            ];
+        }
         $fakeRequest = [
             'user_id' => $faker->numberBetween(1, 10),
-            'products' => [
-                [
-                    'id' => $faker->numberBetween(1, 10),
-                    'quantity' => $faker->numberBetween(2, 10)
-                ],
-                [
-                    'id' => $faker->numberBetween(1, 10),
-                    'quantity' => $faker->numberBetween(3, 10)
-                ],
-            ],
+            'products' => $products,
             'name' => $faker->name,
             'email' => $faker->email,
             'address' => $faker->address,
