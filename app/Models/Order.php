@@ -25,7 +25,7 @@ class Order extends Model
         return $this->hasOne(Shipment::class,'order_id','id');
     }
 
-    protected $dispatchesEvents = [
-        'created' => OrderCreate::class,
-    ];
+//    protected $dispatchesEvents = [
+//        'created' => OrderCreate::class,
+//    ];
 }
