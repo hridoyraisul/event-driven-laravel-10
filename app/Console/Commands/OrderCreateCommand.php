@@ -35,15 +35,11 @@ class OrderCreateCommand extends Command
             'products' => [
                 [
                     'id' => $faker->numberBetween(1, 10),
-                    'quantity' => $faker->numberBetween(1, 10)
-                ],
-                [
-                    'id' => $faker->numberBetween(1, 10),
-                    'quantity' => $faker->numberBetween(1, 10)
-                ],
-                [
-                    'id' => $faker->numberBetween(1, 10),
                     'quantity' => $faker->numberBetween(2, 10)
+                ],
+                [
+                    'id' => $faker->numberBetween(1, 10),
+                    'quantity' => $faker->numberBetween(3, 10)
                 ],
             ],
             'name' => $faker->name,
@@ -61,6 +57,9 @@ class OrderCreateCommand extends Command
         $response = (new OrderController())->create2(
             new OrderCreateRequest($fakeRequest)
         );
+
+        $this->info('Execution time: ' . round(microtime(true) - LARAVEL_START, 2) . ' seconds');
+        $this->info('Memory used: ' . round(memory_get_usage() / 1024 / 1024, 2) . ' MB');
 
         $this->newLine();
         if ($response->getStatusCode() !== 201) {
