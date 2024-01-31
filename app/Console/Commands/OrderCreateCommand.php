@@ -52,7 +52,7 @@ class OrderCreateCommand extends Command
 //            new Request($fakeRequest)
 //        );
 
-        $response = (new OrderController())->create2(
+        $response = (new OrderController())->create(
             new OrderCreateRequest($fakeRequest)
         );
 

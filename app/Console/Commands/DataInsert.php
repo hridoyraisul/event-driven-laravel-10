@@ -39,6 +39,7 @@ class DataInsert extends Command
                 'created_at' => now(),
             ];
         }
+
         \DB::table('products')->insert($products);
 
         $faker = \Faker\Factory::create();
@@ -51,6 +52,7 @@ class DataInsert extends Command
                 'created_at' => now(),
             ];
         }
+
         \DB::table('users')->insert($users);
 
         Log::info('Data inserted successfully');
